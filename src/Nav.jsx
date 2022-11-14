@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
-const Nav = (props) => {
+const Nav = ({ selectedProducts }) => {
+  console.log("nav", selectedProducts);
   return (
     <NavWrapper>
-      <h1>ClothesStore</h1>
+      <h1>OnlineShop</h1>
       <ul>
         <li>
           <NavLink to="/">Home</NavLink>
@@ -18,7 +19,11 @@ const Nav = (props) => {
         <li>
           <NavLink to="/cart">
             <FaShoppingCart />
-            <h6>1</h6>
+            <div className="badge-container">
+              {selectedProducts.length > 0 && (
+                <div className="badge-btn">{selectedProducts.length}</div>
+              )}
+            </div>
           </NavLink>
         </li>
       </ul>
@@ -31,23 +36,25 @@ const NavWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.dark};
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  /* gap: 1rem; */
   padding: 1rem 2rem;
   font-size: 2rem;
-  flex-wrap: nowrap;
-
+  flex-wrap: wrap;
   h1 {
+    flex-basis: auto;
     color: ${({ theme }) => theme.colors.active.secondary};
     font-size: 4rem;
     text-decoration: underline;
     text-decoration-color: ${({ theme }) => theme.colors.secondary};
   }
   ul {
+    flex-basis: auto;
+
     display: flex;
     list-style: none;
     gap: 1rem;
   }
-  @media (max-width: 480px) {
+  @media (max-width: 550px) {
     flex-direction: column;
   }
 `;
@@ -67,15 +74,20 @@ const NavLink = styled(Link)`
   &:active {
     color: ${({ theme }) => theme.colors.active.secondary};
   }
-
-  h6 {
-    color: red;
+  & .badge-container {
     position: relative;
-    right: 32px;
-    top: 20px;
+  }
+
+  & .badge-btn {
+    color: ${({ theme }) => theme.colors.secondary};
+    top: 1.5rem;
+    right: -10px;
+    border-radius: 25%;
+    position: absolute;
+    font-size: 14px;
+    font-weight: 900;
+    padding: 1px 3px;
     background-color: ${({ theme }) => theme.colors.active.secondary};
-    font-size: 1rem;
-    padding: 0;
   }
 `;
 export default Nav;

@@ -4,7 +4,6 @@ import { FaGithub } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 const Footer = () => {
   const location = useLocation();
-  console.log(location);
   return (
     <FooterWrapper>
       {location.pathname !== "/products" && <ImgWrapper src={backGroundWave} />}
@@ -21,9 +20,9 @@ const Footer = () => {
 };
 
 const FooterWrapper = styled.footer`
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,10 +30,12 @@ const FooterWrapper = styled.footer`
   /* padding: 1rem 0; */
   background-color: #264653;
   color: #e9c46a;
+
+  overflow: hidden;
 `;
 const ImgWrapper = styled.img`
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 20px;
   left: 0;
   width: 100%;
   z-index: -100;
