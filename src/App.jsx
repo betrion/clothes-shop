@@ -7,6 +7,7 @@ import { ThemeProvider } from "styled-components";
 import Theme from "./styles/theme";
 import React from "react";
 import { useState } from "react";
+import Home from "./Home";
 const Products = React.lazy(() => import("./Products"));
 function App() {
   const [selectedProducts, setSelectedProducts] = useState([]);
@@ -15,7 +16,7 @@ function App() {
       <GlobalStyle />
       <Nav {...{ selectedProducts, setSelectedProducts }} />
       <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/" element={<Home />} />
         <Route path="/contact" element={<h1>Contact</h1>} />
         <Route
           path="/products"

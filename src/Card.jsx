@@ -1,7 +1,7 @@
 import styled from "styled-components";
-
+import PropTypes from "prop-types";
 const Card = ({ cloth }) => {
-  console.log(cloth);
+  // console.log(cloth);
   const titleFormat = (title) => {
     return title.length <= 20 ? title : title.substr(0, 20) + "...";
   };
@@ -17,7 +17,9 @@ const Card = ({ cloth }) => {
     </CardWrapper>
   );
 };
-
+Card.propTypes = {
+  cloth: PropTypes.object,
+};
 const CardWrapper = styled.div`
   display: flex;
   width: 15vw;

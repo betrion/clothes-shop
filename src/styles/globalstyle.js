@@ -3,6 +3,7 @@ const global = createGlobalStyle`
   /*
   1. Use a more-intuitive box-sizing model.
 */
+
   *,
   *::before,
   *::after {
@@ -12,8 +13,7 @@ const global = createGlobalStyle`
   2. Remove default margin
 */
   * {
-    margin: 0;
-  }
+    margin: 0;}
   /*
   3. Allow percentage-based heights in the application
 */
