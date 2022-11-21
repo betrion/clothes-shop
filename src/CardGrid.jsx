@@ -1,9 +1,17 @@
 import styled from "styled-components";
 import Card from "./Card";
-const CardGrid = ({ clothes }) => {
+const CardGrid = ({ items, selectedProducts, setSelectedProducts }) => {
   return (
     <GridWrapper>
-      {clothes && clothes.map((cloth) => <Card cloth={cloth} key={cloth.id} />)}
+      {items &&
+        items.map((item) => (
+          <Card
+            item={item}
+            key={item.id}
+            selectedProducts={selectedProducts}
+            setSelectedProducts={setSelectedProducts}
+          />
+        ))}
     </GridWrapper>
   );
 };

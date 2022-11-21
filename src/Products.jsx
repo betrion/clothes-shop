@@ -2,11 +2,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import CardGrid from "./CardGrid";
-const Products = () => {
-  const [clothes, setClothes] = useState([]);
+const Products = ({ selectedProducts, setSelectedProducts }) => {
+  const [items, setItems] = useState([]);
 
-  const getClothes = async (amount) => {
-    const clothesToGet = [];
+  const getItems = async (amount) => {
+    const itemsToGet = [];
     const data = await axios
       .get(`https://fakestoreapi.com/products?limit=${amount}`)
       .then((res) => {
@@ -16,25 +16,29 @@ const Products = () => {
           const price = element.price;
           const description = element.description;
           const image = element.image;
-          clothesToGet.push({ id, title, price, description, image });
+          itemsToGet.push({ id, title, price, description, image });
         });
       })
       .catch((error) =>
         console.log("ERROR: invalid fetch url, error type: ", error)
       );
 
-    return clothesToGet;
+    return itemsToGet;
   };
   useEffect(() => {
-    const loadClothes = async () => {
-      setClothes(await getClothes(20));
+    const loadItems = async () => {
+      setItems(await getItems(20));
     };
-    loadClothes();
+    loadItems();
   }, []);
 
   return (
     <>
-      <CardGrid clothes={clothes} />
+      <CardGrid
+        items={items}
+        selectedProducts={selectedProducts}
+        setSelectedProducts={setSelectedProducts}
+      />
     </>
   );
 };

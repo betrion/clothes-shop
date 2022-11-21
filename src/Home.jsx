@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Hero from "./images/hero.jpg";
 import { Link } from "react-router-dom";
-import Products from "./Products";
 const Home = () => {
   return (
     <HomeWrapper>
