@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import backGroundWave from "./images/wave.svg";
+import backGroundWave from "../images/wave.svg";
 import { FaGithub } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 const Footer = () => {

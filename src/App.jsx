@@ -1,15 +1,15 @@
 // import { motion } from "framer-motion";
 import GlobalStyle from "./styles/globalstyle";
 import { Route, Routes } from "react-router-dom";
-import Nav from "./Nav";
-import Footer from "./Footer";
+import Nav from "./pages/Nav";
+import Footer from "./pages/Footer";
 import { ThemeProvider } from "styled-components";
-import Theme from "./styles/theme";
+import Theme from "./styles/colorscheme";
 import React, { createContext } from "react";
 import { useState } from "react";
 import Home from "./Home";
 import Cart from "./Cart";
-import Contact from "./Contact";
+import Contact from "./pages/Contact";
 const Products = React.lazy(() => import("./Products"));
 function App() {
   const [selectedProducts, setSelectedProducts] = useState([]);

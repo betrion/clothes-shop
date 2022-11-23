@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 const Nav = ({ selectedProducts }) => {
-  console.log("nav", selectedProducts);
   return (
     <NavWrapper>
       <h1>OnlineShop</h1>

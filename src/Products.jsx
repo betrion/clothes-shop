@@ -16,7 +16,8 @@ const Products = ({ selectedProducts, setSelectedProducts }) => {
           const price = element.price;
           const description = element.description;
           const image = element.image;
-          itemsToGet.push({ id, title, price, description, image });
+          const quantity = 0;
+          itemsToGet.push({ id, title, price, description, image, quantity });
         });
       })
       .catch((error) =>
