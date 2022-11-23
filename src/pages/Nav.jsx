@@ -1,19 +1,20 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import ROUTES from "../routes/routes.json";
 const Nav = ({ selectedProducts }) => {
   return (
     <NavWrapper>
       <h1>OnlineShop</h1>
       <ul>
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to={ROUTES.HOME}>Home</NavLink>
         </li>
         <li>
-          <NavLink to="/products">Products</NavLink>
+          <NavLink to={ROUTES.PRODUCTS}>Products</NavLink>
         </li>
         <li>
-          <NavLink to="/contact">Contact</NavLink>
+          <NavLink to={ROUTES.CONTACT}>Contact</NavLink>
         </li>
         <li>
           <NavLink to="/cart">
