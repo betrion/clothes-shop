@@ -28,7 +28,7 @@ const Products = ({ selectedProducts, setSelectedProducts }) => {
   };
   useEffect(() => {
     const loadItems = async () => {
-      setItems(await getItems(20));
+      setItems(await getItems(10));
     };
     loadItems();
   }, []);

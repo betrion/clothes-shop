@@ -7,6 +7,7 @@ const CardGrid = ({ items, selectedProducts, setSelectedProducts }) => {
         items.map((item) => (
           <Card
             item={item}
+            items={items}
             key={item.id}
             selectedProducts={selectedProducts}
             setSelectedProducts={setSelectedProducts}

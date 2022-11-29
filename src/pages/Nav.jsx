@@ -2,7 +2,12 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import ROUTES from "../routes/routes.json";
-const Nav = ({ selectedProducts }) => {
+import { useState } from "react";
+import Cart from "../Cart";
+const Nav = ({ selectedProducts, showCart, setShowCart }) => {
+  const handleShowCart = () => {
+    setShowCart((prev) => !prev);
+  };
   return (
     <NavWrapper>
       <h1>OnlineShop</h1>
@@ -17,14 +22,16 @@ const Nav = ({ selectedProducts }) => {
           <NavLink to={ROUTES.CONTACT}>Contact</NavLink>
         </li>
         <li>
-          <NavLink to="/cart">
+          {/* <NavLink to="/cart"> */}
+          <CartLink onClick={handleShowCart}>
             <FaShoppingCart />
             <div className="badge-container">
               {selectedProducts.length > 0 && (
                 <div className="badge-btn">{selectedProducts.length}</div>
               )}
             </div>
-          </NavLink>
+          </CartLink>
+          {/* </NavLink> */}
         </li>
       </ul>
     </NavWrapper>
@@ -87,6 +94,38 @@ const NavLink = styled(Link)`
     font-size: 14px;
     font-weight: 900;
     padding: 1px 3px;
+    background-color: ${({ theme }) => theme.colors.active.secondary};
+  }
+`;
+const CartLink = styled.span`
+  padding: 1rem;
+
+  color: ${({ theme }) => theme.colors.primary};
+  text-decoration: none;
+  display: flex;
+
+  transition: transform 0.15s ease-in-out;
+  &:hover {
+    color: ${({ theme }) => theme.colors.secondary};
+    transform: scale(1.2);
+  }
+  &:active {
+    color: ${({ theme }) => theme.colors.active.secondary};
+  }
+  & .badge-container {
+    position: relative;
+  }
+
+  & .badge-btn {
+    color: ${({ theme }) => theme.colors.secondary};
+    user-select: none;
+    top: 1.5rem;
+    right: -10px;
+    border-radius: 100%;
+    position: absolute;
+    font-size: 14px;
+    font-weight: 900;
+    padding: 1px 5px;
     background-color: ${({ theme }) => theme.colors.active.secondary};
   }
 `;

@@ -5,17 +5,23 @@ export const CartBg = styled.div`
   z-index: 111;
   height: 100vh;
   width: 100vw;
-  background-color: grey;
-  animation: fadeIn ease 1s;
+  backdrop-filter: blur(0px);
+  .close-btn {
+    font-size: 3rem;
+    margin-left: auto;
+    color: red;
+    cursor: pointer;
+  }
+  animation: fadeIn forwards ease-in 1s;
   @keyframes fadeIn {
     0% {
-      opacity: 0;
     }
     100% {
-      opacity: 0.5;
+      filter: brightness(50%);
+      backdrop-filter: blur(5px);
     }
   }
-  opacity: 0.5;
+  /* opacity: 0.5; */
 `;
 export const CartWrapper = styled.div`
   border: 1px solid black;
@@ -25,7 +31,7 @@ export const CartWrapper = styled.div`
   z-index: 100;
   display: block;
   margin: 0 0 0 65%;
-  animation: slideIn ease 2s;
+  animation: slideIn forwards ease 2s;
   @keyframes slideIn {
     0% {
       left: -100px;

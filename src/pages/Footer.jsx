@@ -6,7 +6,10 @@ const Footer = () => {
   const location = useLocation();
   return (
     <FooterWrapper>
-      {location.pathname !== "/products" && <ImgWrapper src={backGroundWave} />}
+      {location.pathname !== "/online-shop/products" && (
+        <ImgWrapper src={backGroundWave} />
+      )}
+
       <small>© 2022 Dean</small>
       <GithubLink
         href="https://github.com/betrion"
