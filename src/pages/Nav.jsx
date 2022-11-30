@@ -67,8 +67,10 @@ const NavWrapper = styled.div`
     list-style: none;
     gap: 1rem;
   }
-  @media (max-width: 550px) {
+  @media (max-width: 750px) {
     flex-direction: column;
+    gap: 0rem;
+    font-size: 1.4rem;
   }
 `;
 

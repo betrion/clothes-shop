@@ -13,7 +13,7 @@ const slideIn = keyframes`
       left: -95%;
     }
     100% {
-      left: +6%;
+      left: 0%;
     }
   `;
 
@@ -22,7 +22,7 @@ const mobileSlideIn = keyframes`
     left:-95%;
   }
   100%{
-    left:-50%;
+    left:-40%;
   }
 `;
 
@@ -59,7 +59,7 @@ export const CartWrapper = styled.div`
   filter: brightness(100%);
   padding-bottom: 1rem;
 
-  @media (max-width: 550px) {
+  @media (max-width: 750px) {
     animation: ${mobileSlideIn} forwards ease 2s;
   }
 `;
