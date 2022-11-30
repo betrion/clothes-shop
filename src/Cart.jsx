@@ -1,5 +1,6 @@
 import { FaWindowClose } from "react-icons/fa";
 import { CartBg, CartWrapper, ProductsContainer } from "./styles/Cart.style";
+import formatTitle from "./functions/formatTitle";
 const Cart = ({
   setShowCart,
   selectedProducts,
@@ -14,20 +15,14 @@ const Cart = ({
     console.log("delete");
   };
   const renderProducts = selectedProducts.map((product) => (
-    <div key={Math.random()}>
+    <div key={Math.random()} className="product-card">
       <img src={product.item.image} alt={product.item.description}></img>
-      <h4>{product.item.title}</h4>
-      <h6>{product.item.price}$</h6>
-      <small>Qty: {product.quantity} </small>
-      <FaWindowClose
-        onClick={handleDelete}
-        style={{
-          color: "red",
-          margin: "auto",
-          display: "inline",
-          cursor: "pointer",
-        }}
-      />
+      <div className="product-card-info">
+        <h4>{formatTitle(product.item.title)}</h4>
+        <h5>{product.item.price}$</h5>
+        <small>Qty: {product.quantity} </small>
+        <FaWindowClose onClick={handleDelete} className="btn-interactive" />
+      </div>
     </div>
   ));
   return (
@@ -42,7 +37,7 @@ const Cart = ({
         {renderProducts && (
           <ProductsContainer>
             {renderProducts}
-            <h6>Total price: {totalPrice}</h6>
+            <h4 className="price-display">Total price: {totalPrice} $</h4>
           </ProductsContainer>
         )}
       </CartWrapper>
