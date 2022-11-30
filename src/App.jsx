@@ -6,7 +6,7 @@ import Footer from "./pages/Footer";
 import { ThemeProvider } from "styled-components";
 import Theme from "./styles/colorscheme";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Home from "./Home";
 import Cart from "./Cart";
 import Contact from "./pages/Contact";
@@ -16,27 +16,48 @@ const Products = React.lazy(() => import("./Products"));
 const App = () => {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [showCart, setShowCart] = useState(false);
-
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [amountInCart, setAmountInCart] = useState(0);
+  useEffect(() => {
+    let price = 0;
+    selectedProducts.forEach((e) => (price += e.quantity * e.item.price));
+    setTotalPrice(price.toFixed(2));
+  }, [amountInCart]);
   return (
     <ThemeProvider theme={Theme}>
       <GlobalStyle />
       <Nav
-        {...{ selectedProducts, setSelectedProducts, showCart, setShowCart }}
+        {...{
+          selectedProducts,
+          setSelectedProducts,
+          showCart,
+          setShowCart,
+          totalPrice,
+          amountInCart,
+        }}
       />
-      {showCart && <Cart {...{ showCart, setShowCart, selectedProducts }} />}
+      {showCart && (
+        <Cart {...{ showCart, setShowCart, selectedProducts, totalPrice }} />
+      )}
+
       <Routes>
         <Route path="/" element={<Navigate to={ROUTES.HOME} />} />
         <Route path={ROUTES.HOME} element={<Home />} />
         <Route path={ROUTES.CONTACT} element={<Contact />} />
-        {/* <Route
-          path="/online-shop/cart"
-          element={<Cart {...{ selectedProducts, setSelectedProducts }} />}
-        /> */}
         <Route
           path={ROUTES.PRODUCTS}
           element={
             <React.Suspense fallback={<h2>Loading products...</h2>}>
-              <Products {...{ selectedProducts, setSelectedProducts }} />
+              <Products
+                {...{
+                  selectedProducts,
+                  setSelectedProducts,
+                  amountInCart,
+                  setAmountInCart,
+                  totalPrice,
+                  setTotalPrice,
+                }}
+              />
             </React.Suspense>
           }
         />
