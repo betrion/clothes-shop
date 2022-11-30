@@ -2,7 +2,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import CardGrid from "./CardGrid";
-const Products = ({ selectedProducts, setSelectedProducts }) => {
+const Products = ({
+  selectedProducts,
+  setSelectedProducts,
+  amountInCart,
+  setAmountInCart,
+  totalPrice,
+  setTotalPrice,
+}) => {
   const [items, setItems] = useState([]);
 
   const getItems = async (amount) => {
@@ -36,9 +43,14 @@ const Products = ({ selectedProducts, setSelectedProducts }) => {
   return (
     <>
       <CardGrid
-        items={items}
-        selectedProducts={selectedProducts}
-        setSelectedProducts={setSelectedProducts}
+        {...{
+          items,
+          selectedProducts,
+          setSelectedProducts,
+          setAmountInCart,
+          amountInCart,
+          totalPrice,
+        }}
       />
     </>
   );

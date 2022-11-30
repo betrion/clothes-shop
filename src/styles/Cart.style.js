@@ -1,53 +1,62 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-export const CartBg = styled.div`
-  position: absolute;
-  z-index: 111;
-  height: 100vh;
-  width: 100vw;
-  backdrop-filter: blur(0px);
-  .close-btn {
-    font-size: 3rem;
-    margin-left: auto;
-    color: red;
-    cursor: pointer;
-  }
-  animation: fadeIn forwards ease-in 1s;
-  @keyframes fadeIn {
+const fadeIn = keyframes`
     0% {
+      /* filter: brightness(100%); */
     }
     100% {
-      filter: brightness(50%);
-      backdrop-filter: blur(5px);
-    }
-  }
-  /* opacity: 0.5; */
-`;
-export const CartWrapper = styled.div`
-  border: 1px solid black;
-  background-color: wheat;
-  position: absolute;
+      /* filter: brightness(50%); */
+      backdrop-filter: blur(5px)}`;
 
-  z-index: 100;
-  display: block;
-  margin: 0 0 0 65%;
-  animation: slideIn forwards ease 2s;
-  @keyframes slideIn {
+const slideIn = keyframes` 
     0% {
       left: -100px;
     }
     100% {
       left: 0;
     }
+  `;
+
+export const CartBg = styled.div`
+  position: fixed;
+  z-index: 111;
+  height: 100vh;
+  width: 100vw;
+  animation: ${fadeIn} forwards ease-in 1s;
+  overflow: scroll;
+
+  /* opacity: 0.5; */
+  .close-btn {
+    position: relative;
+    display: inline-block;
+    font-size: 3rem;
+
+    right: -96%;
+    color: red;
+    cursor: pointer;
   }
 `;
+export const CartWrapper = styled.div`
+  border: 1px solid black;
+  background-color: #fff;
+  position: absolute;
+  /* height: 70vh; */
+  z-index: 100;
+  display: block;
+  margin: 0 0 0 65%;
+  animation: ${slideIn} forwards ease 2s;
+  filter: brightness(100%);
+`;
+
 export const ProductsContainer = styled.div`
   display: flex;
-  flex-direction: column-reverse;
-  & img {
-    width: 100px;
-  }
+  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  /* align-items: center; */
-  justify-content: flex-end;
+  overflow: scroll;
+  flex-basis: auto;
+
+  & img {
+    width: 60px;
+  }
 `;

@@ -1,10 +1,17 @@
-import { useState } from "react";
 import { FaWindowClose } from "react-icons/fa";
-import styled from "styled-components";
 import { CartBg, CartWrapper, ProductsContainer } from "./styles/Cart.style";
-const Cart = ({ setShowCart, selectedProducts, setSelectedProducts }) => {
+const Cart = ({
+  setShowCart,
+  selectedProducts,
+  setSelectedProducts,
+  totalPrice,
+}) => {
   const handleClose = () => {
     setShowCart((prev) => !prev);
+  };
+
+  const handleDelete = () => {
+    console.log("delete");
   };
   const renderProducts = selectedProducts.map((product) => (
     <div key={Math.random()}>
@@ -13,7 +20,13 @@ const Cart = ({ setShowCart, selectedProducts, setSelectedProducts }) => {
       <h6>{product.item.price}$</h6>
       <small>Qty: {product.quantity} </small>
       <FaWindowClose
-        style={{ color: "red", margin: "auto", display: "inline" }}
+        onClick={handleDelete}
+        style={{
+          color: "red",
+          margin: "auto",
+          display: "inline",
+          cursor: "pointer",
+        }}
       />
     </div>
   ));
@@ -27,7 +40,10 @@ const Cart = ({ setShowCart, selectedProducts, setSelectedProducts }) => {
           </div>
         )}
         {renderProducts && (
-          <ProductsContainer>{renderProducts}</ProductsContainer>
+          <ProductsContainer>
+            {renderProducts}
+            <h6>Total price: {totalPrice}</h6>
+          </ProductsContainer>
         )}
       </CartWrapper>
     </CartBg>

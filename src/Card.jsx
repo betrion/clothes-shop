@@ -1,21 +1,33 @@
 import { CardWrapper } from "./styles/Card.style";
 import titleFormat from "./functions/formatTitle";
 import { useState } from "react";
-const Card = ({ item, items, selectedProducts, setSelectedProducts }) => {
+import { useEffect } from "react";
+const Card = ({
+  item,
+  items,
+  selectedProducts,
+  setSelectedProducts,
+  amountInCart,
+  setAmountInCart,
+  totalPrice,
+  setTotalPrice,
+}) => {
   const handleAddToCart = (e) => {
     let isInCart = false;
     if (selectedProducts.length > 0)
       selectedProducts.forEach((element) => {
         if (element.item.title === item.title) {
-          console.log("here");
           element.quantity += 1;
           isInCart = true;
+          setAmountInCart(amountInCart + 1);
         }
       });
     if (!isInCart) {
       setSelectedProducts([...selectedProducts, { item: item, quantity: 1 }]);
+      setAmountInCart(amountInCart + 1);
     }
   };
+
   // setSelectedProducts([item]);
 
   //   if (selectedProducts.length === 0) {

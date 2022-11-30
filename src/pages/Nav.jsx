@@ -4,7 +4,13 @@ import { FaShoppingCart } from "react-icons/fa";
 import ROUTES from "../routes/routes.json";
 import { useState } from "react";
 import Cart from "../Cart";
-const Nav = ({ selectedProducts, showCart, setShowCart }) => {
+const Nav = ({
+  selectedProducts,
+  showCart,
+  setShowCart,
+  totalPrice,
+  amountInCart,
+}) => {
   const handleShowCart = () => {
     setShowCart((prev) => !prev);
   };
@@ -26,8 +32,8 @@ const Nav = ({ selectedProducts, showCart, setShowCart }) => {
           <CartLink onClick={handleShowCart}>
             <FaShoppingCart />
             <div className="badge-container">
-              {selectedProducts.length > 0 && (
-                <div className="badge-btn">{selectedProducts.length}</div>
+              {amountInCart > 0 && (
+                <div className="badge-btn">{amountInCart}</div>
               )}
             </div>
           </CartLink>

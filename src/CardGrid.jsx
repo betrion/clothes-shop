@@ -1,6 +1,14 @@
 import Card from "./Card";
 import { GridWrapper } from "./styles/GridWrapper";
-const CardGrid = ({ items, selectedProducts, setSelectedProducts }) => {
+const CardGrid = ({
+  items,
+  selectedProducts,
+  setSelectedProducts,
+  totalPrice,
+  setTotalPrice,
+  amountInCart,
+  setAmountInCart,
+}) => {
   return (
     <GridWrapper>
       {items &&
@@ -11,6 +19,7 @@ const CardGrid = ({ items, selectedProducts, setSelectedProducts }) => {
             key={item.id}
             selectedProducts={selectedProducts}
             setSelectedProducts={setSelectedProducts}
+            {...{ totalPrice, setTotalPrice, amountInCart, setAmountInCart }}
           />
         ))}
     </GridWrapper>
