@@ -56,12 +56,12 @@ export const CartWrapper = styled.div`
   z-index: 100;
   display: block;
   margin: 0 0 0 65%;
-  animation: ${slideIn} forwards ease 0.2s;
+  animation: ${slideIn} forwards ease 1.2s;
   filter: brightness(100%);
   padding-bottom: 1rem;
 
   @media (max-width: 750px) {
-    animation: ${mobileSlideIn} forwards ease 2s;
+    animation: ${mobileSlideIn} forwards ease 1.2s;
   }
 `;
 

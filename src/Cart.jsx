@@ -1,6 +1,7 @@
 import { FaWindowClose, FaPlusSquare, FaMinusSquare } from "react-icons/fa";
 import { CartBg, CartWrapper, ProductsContainer } from "./styles/Cart.style";
 import formatTitle from "./functions/formatTitle";
+import { act } from "react-dom/test-utils";
 const Cart = ({
   setShowCart,
   selectedProducts,
@@ -25,9 +26,32 @@ const Cart = ({
       setAmountInCart(amountInCart - 1);
     }
   };
-  const handleChangeQty = (e, id) => {
-    console.log(JSON.stringify(e.target.id));
+  const handleChangeQty = (e) => {
+    const action = e.target.dataset.action;
+    const currentProduct = e.target.id;
+    console.log(action);
+
+    selectedProducts.forEach((element) => {
+      console.log(Number(element.item.id) === Number(currentProduct));
+      if (Number(element.item.id) === Number(currentProduct)) {
+        if (action === "minus") {
+          element.quantity -= 1;
+          setAmountInCart(amountInCart - 1);
+        }
+        if (action === "plus") {
+          element.quantity += 1;
+          setAmountInCart(amountInCart + 1);
+        }
+        if (element.quantity === 0) {
+          const filteredProducts = selectedProducts.filter(
+            (cartItem) => cartItem != element
+          );
+          setSelectedProducts(filteredProducts);
+        }
+      }
+    });
   };
+
   const renderProducts = selectedProducts.map((product) => (
     <div key={Math.random()} className="product-card" id={product.item.id}>
       <img src={product.item.image} alt={product.item.description}></img>
@@ -36,14 +60,20 @@ const Cart = ({
         <h5>{product.item.price}$</h5>
         <button
           onClick={handleChangeQty}
-          id={product.item.title}
+          id={product.item.id}
           className="btn-change"
+          data-action="minus"
         >
           -
         </button>
 
         <small>Qty: {product.quantity} </small>
-        <button onClick={handleDelete} className="btn-change">
+        <button
+          onClick={handleChangeQty}
+          className="btn-change"
+          data-action="plus"
+          id={product.item.id}
+        >
           +
         </button>
 
