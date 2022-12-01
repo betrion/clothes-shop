@@ -18,11 +18,14 @@ const App = () => {
   const [showCart, setShowCart] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
   const [amountInCart, setAmountInCart] = useState(0);
+
   useEffect(() => {
     let price = 0;
     selectedProducts.forEach((e) => (price += e.quantity * e.item.price));
     setTotalPrice(price.toFixed(2));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [amountInCart]);
+
   return (
     <ThemeProvider theme={Theme}>
       <GlobalStyle />
@@ -37,7 +40,17 @@ const App = () => {
         }}
       />
       {showCart && (
-        <Cart {...{ showCart, setShowCart, selectedProducts, totalPrice }} />
+        <Cart
+          {...{
+            showCart,
+            setShowCart,
+            selectedProducts,
+            setSelectedProducts,
+            totalPrice,
+            amountInCart,
+            setAmountInCart,
+          }}
+        />
       )}
 
       <Routes>

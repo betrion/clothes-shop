@@ -13,7 +13,7 @@ const slideIn = keyframes`
       left: -95%;
     }
     100% {
-      left: 0%;
+      left: -10%;
     }
   `;
 
@@ -38,9 +38,10 @@ export const CartBg = styled.div`
   .close-btn {
     position: relative;
     display: inline-block;
-    font-size: 3rem;
+    font-size: 2rem;
 
-    right: -96%;
+    left: 88%;
+    margin-top: 0.5rem;
     color: red;
     cursor: pointer;
   }
@@ -55,7 +56,7 @@ export const CartWrapper = styled.div`
   z-index: 100;
   display: block;
   margin: 0 0 0 65%;
-  animation: ${slideIn} forwards ease 2s;
+  animation: ${slideIn} forwards ease 0.2s;
   filter: brightness(100%);
   padding-bottom: 1rem;
 
@@ -79,10 +80,27 @@ export const ProductsContainer = styled.div`
     gap: 2rem;
   }
 
-  .btn-interactive {
+  .btn-delete {
+    display: inline-block;
+    pointer-events: all;
+    background-color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.primary};
+    border: none;
+    margin-left: 4px;
+  }
+  .btn-change {
     color: green;
     display: inline-block;
-    cursor: pointer;
+    /* cursor: pointer; */
+    margin: 0 5px;
+    /* padding: 0.2rem 0.4rem; */
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.active.secondary};
+    border: none;
+    border-radius: 10%;
+  }
+  .btn-change:hover {
+    background-color: ${({ theme }) => theme.colors.active.primary};
   }
   & img {
     width: 60px;
