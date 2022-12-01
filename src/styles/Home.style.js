@@ -11,7 +11,6 @@ export const HomeWrapper = styled.div`
       opacity: 1;
     }
   }
-  /* gap: 1rem; */
   padding: 3rem 0;
   & h1 {
     font-size: 2rem;
@@ -35,7 +34,6 @@ export const LeftColumn = styled.div`
 `;
 export const RightColumn = styled.div`
   & img {
-    /* height: auto; */
     animation: fadeIn ease 2s;
     @keyframes fadeIn {
       0% {

@@ -3,12 +3,6 @@ import styled from "styled-components";
 export const GridWrapper = styled.div`
   display: grid;
   gap: 1rem;
-  /* height: 90%; */
-  /* flex-direction: row; */
-  /* justify-content: space-around; */
-  /* flex-wrap: wrap; */
-  /* overflow: auto; */
-  /* padding-bottom: 2rem; */
   grid-template-columns: repeat(4, 1fr);
   padding: 1rem 2rem;
   animation: fadeIn ease 2s;

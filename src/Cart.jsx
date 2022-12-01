@@ -1,7 +1,7 @@
-import { FaWindowClose, FaPlusSquare, FaMinusSquare } from "react-icons/fa";
+import { FaWindowClose } from "react-icons/fa";
 import { CartBg, CartWrapper, ProductsContainer } from "./styles/Cart.style";
 import formatTitle from "./functions/formatTitle";
-import { act } from "react-dom/test-utils";
+
 const Cart = ({
   setShowCart,
   selectedProducts,
@@ -44,7 +44,7 @@ const Cart = ({
         }
         if (element.quantity === 0) {
           const filteredProducts = selectedProducts.filter(
-            (cartItem) => cartItem != element
+            (cartItem) => cartItem !== element
           );
           setSelectedProducts(filteredProducts);
         }

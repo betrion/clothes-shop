@@ -34,7 +34,6 @@ export const CartBg = styled.div`
   animation: ${fadeIn} forwards ease-in 1s;
   overflow: scroll;
 
-  /* opacity: 0.5; */
   .close-btn {
     position: relative;
     display: inline-block;
@@ -52,7 +51,6 @@ export const CartWrapper = styled.div`
   border-radius: 15px;
   background-color: #fff;
   position: absolute;
-  /* height: 70vh; */
   z-index: 100;
   display: block;
   margin: 0 0 0 65%;
@@ -68,7 +66,6 @@ export const CartWrapper = styled.div`
 export const ProductsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
   align-items: center;
   height: 65vh;
   overflow: scroll;
@@ -91,9 +88,7 @@ export const ProductsContainer = styled.div`
   .btn-change {
     color: green;
     display: inline-block;
-    /* cursor: pointer; */
     margin: 0 5px;
-    /* padding: 0.2rem 0.4rem; */
     background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.active.secondary};
     border: none;

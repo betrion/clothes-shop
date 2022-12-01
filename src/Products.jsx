@@ -1,4 +1,3 @@
-// import styled from "styled-components";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import CardGrid from "./CardGrid";
@@ -8,7 +7,6 @@ const Products = ({
   amountInCart,
   setAmountInCart,
   totalPrice,
-  setTotalPrice,
 }) => {
   const [items, setItems] = useState([]);
 

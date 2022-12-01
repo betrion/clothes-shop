@@ -1,16 +1,11 @@
 import { CardWrapper } from "./styles/Card.style";
 import titleFormat from "./functions/formatTitle";
-import { useState } from "react";
-import { useEffect } from "react";
 const Card = ({
   item,
-  items,
   selectedProducts,
   setSelectedProducts,
   amountInCart,
   setAmountInCart,
-  totalPrice,
-  setTotalPrice,
 }) => {
   const handleAddToCart = (e) => {
     let isInCart = false;
@@ -28,12 +23,6 @@ const Card = ({
     }
   };
 
-  const handleDelete = () => {
-    const filteredProducts = selectedProducts.filter(
-      (cartItem) => cartItem.title !== item.title
-    );
-    setSelectedProducts(filteredProducts);
-  };
   return (
     <CardWrapper>
       <div key={item.id} id={item.id} name={item.title}>

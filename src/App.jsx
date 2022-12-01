@@ -1,4 +1,3 @@
-// import { motion } from "framer-motion";
 import GlobalStyle from "./styles/globalstyle";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Nav from "./pages/Nav";
