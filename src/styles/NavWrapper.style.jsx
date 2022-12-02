@@ -67,6 +67,7 @@ export const CartLink = styled.span`
   color: ${({ theme }) => theme.colors.primary};
   text-decoration: none;
   display: flex;
+  cursor: pointer;
 
   transition: transform 0.15s ease-in-out;
   &:hover {
@@ -84,6 +85,7 @@ export const CartLink = styled.span`
     color: ${({ theme }) => theme.colors.secondary};
     user-select: none;
     top: 1.5rem;
+
     right: -10px;
     border-radius: 100%;
     position: absolute;
