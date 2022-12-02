@@ -2,11 +2,12 @@ import styled from "styled-components";
 import backGroundWave from "../images/wave.svg";
 import { FaGithub } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
+import ROUTES from "../routes/routes.json";
 const Footer = () => {
   const location = useLocation();
   return (
     <FooterWrapper>
-      {location.pathname !== "/online-shop/products" && (
+      {location.pathname !== ROUTES.PRODUCTS && (
         <ImgWrapper src={backGroundWave} />
       )}
 
